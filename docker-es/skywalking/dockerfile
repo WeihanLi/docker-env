@@ -5,14 +5,9 @@ WORKDIR /app
 RUN yum install -y wget && \
     yum install -y java-1.8.0-openjdk
 
-ADD http://mirrors.hust.edu.cn/apache/incubator/skywalking/5.0.0-RC2/apache-skywalking-apm-incubating-5.0.0-RC2.tar.gz /app
+ADD http://mirror.bit.edu.cn/apache/incubator/skywalking/5.0.0-GA/apache-skywalking-apm-incubating-5.0.0-GA.tar.gz /app
 
-RUN tar -xf apache-skywalking-apm-incubating-5.0.0-RC2.tar.gz && \
-    mv apache-skywalking-apm-incubating skywalking
-
-RUN ls /app
-
-COPY application.yml /app/skywalking/config/application.yml
+RUN tar -xf apache-skywalking-apm-incubating-5.0.0-GA.tar.gz && mv apache-skywalking-apm-incubating skywalking
 
 WORKDIR /app/skywalking/bin
 
