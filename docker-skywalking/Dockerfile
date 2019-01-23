@@ -2,6 +2,10 @@ FROM centos:7
 
 WORKDIR /app
 
+# Timezone, Asia/Shanghai by default
+ENV Timezone=Asia/Shanghai
+RUN ln -snf /usr/share/zoneinfo/$Timezone /etc/localtime && echo '$Timezone' > /etc/timezone
+
 RUN yum install -y wget && \
     yum install -y java-1.8.0-openjdk
 

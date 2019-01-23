@@ -7,7 +7,7 @@ services:
       - 9200:9200
     volumes:
       - ./es/data:/usr/share/elasticsearch/data
-      - ./es/config:/usr/share/elasticsearch/config
+      - ./es/config/elasticsearch.yml:/usr/share/elasticsearch/config/elasticsearch.yml
 
   kibana:
     image: kibana:5.6

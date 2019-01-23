@@ -1,3 +1,4 @@
 cluster.name: elasticsearch
 network.host: 0.0.0.0
 network.publish_host: 0.0.0.0
+thread_pool.bulk.queue_size: 1000
