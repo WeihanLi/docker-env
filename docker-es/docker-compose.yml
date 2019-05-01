@@ -8,6 +8,10 @@ services:
     volumes:
       - ./es/data:/usr/share/elasticsearch/data
       - ./es/config/elasticsearch.yml:/usr/share/elasticsearch/config/elasticsearch.yml
+    ulimits:
+      nofile:
+        soft: 65536
+        hard: 65536
 
   kibana:
     image: kibana:5.6
