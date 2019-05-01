@@ -1,4 +1,4 @@
-FROM node:12
+FROM node:8-slim
 
 LABEL maintainer="weihanli@outlook.com"
 
