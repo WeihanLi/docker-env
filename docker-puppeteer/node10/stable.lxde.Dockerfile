@@ -15,8 +15,8 @@ RUN apt-get update && apt-get install -y wget --no-install-recommends \
     && apt-get purge --auto-remove -y curl \
     && rm -rf /src/*.deb
 
-# install ked gui
-RUN apt-get install -y kde-standard
+# install lxde gui
+RUN apt-get update && ENV DEBIAN_FRONTEND=noninteractive && apt-get install -y --no-install-recommends lxde-core
 
 # Uncomment to skip the chromium download when installing puppeteer. If you do,
 # you'll need to launch puppeteer with:
