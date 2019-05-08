@@ -1,4 +1,3 @@
-
 FROM debian:9
 ENV RDP_USER=user
 ENV RDP_PWD=Password
