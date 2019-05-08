@@ -10,4 +10,5 @@ RUN	apt-get update && \
 	echo '$RDP_USER:$RDP_PWD'|chpasswd && \
 	service xrdp restart
 EXPOSE 3389
+LABEL maintainer="weihanli@outlook.com"
 ENTRYPOINT /etc/init.d/xrdp start && tail -F /var/log/xrdp-sesman.log
