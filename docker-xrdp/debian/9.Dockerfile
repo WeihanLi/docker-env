@@ -5,7 +5,7 @@ RUN useradd -ms /bin/bash ${RDP_USER} && \
         echo "${RDP_USER}:${RDP_PWD}"|chpasswd
 ENV DEBIAN_FRONTEND=noninteractive
 RUN	apt-get update && \
-	apt-get -y --no-install-recommends install lxde-core lxterminal xrdp tigervnc-standalone-server && \
+	apt-get -y --no-install-recommends install lxde-core lxterminal xrdp vnc4server && \
 	apt-get clean && \
 	apt-get -y remove
 EXPOSE 3389
