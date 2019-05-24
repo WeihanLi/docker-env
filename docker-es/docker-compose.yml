@@ -5,13 +5,17 @@ services:
     container_name: elasticsearch
     ports:
       - 9200:9200
-    volumes:
-      - ./es/data:/usr/share/elasticsearch/data
-      - ./es/config/elasticsearch.yml:/usr/share/elasticsearch/config/elasticsearch.yml
     ulimits:
       nofile:
         soft: 65536
         hard: 65536
+    restart: always
+    environment:
+      - "ES_JAVA_OPTS=-Xms512m -Xmx512m" #specific es java memory
+    volumes:
+      - ./es/data:/usr/share/elasticsearch/data
+      - ./es/config/elasticsearch.yml:/usr/share/elasticsearch/config/elasticsearch.yml
+    mem_limit: 1g # memory limit
 
   kibana:
     image: kibana:5.6
