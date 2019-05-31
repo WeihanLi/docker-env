@@ -3,7 +3,8 @@ ENV RDP_USER=user
 ENV RDP_PWD=password
 # RUN echo $RDP_USER && echo "$RDP_USER:$RDP_PWD"
 RUN useradd -ms /bin/bash ${RDP_USER} && \
-        echo "${RDP_USER}:${RDP_PWD}"|chpasswd
+        echo "${RDP_USER}:${RDP_PWD}"|chpasswd && \
+        usermod -a -G sudo ${RDP_USER}
 ENV DEBIAN_FRONTEND=noninteractive
 RUN     apt-get update && \
         apt-get -y install lxde-core lxterminal xrdp && \
