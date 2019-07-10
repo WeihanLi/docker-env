@@ -2,7 +2,7 @@ FROM debian:8
 
 ENV DEBIAN_FRONTEND=noninteractive
 RUN     apt-get update && \
-        apt-get -y install lxde-core lxterminal xrdp && \
+        apt-get -y install lxde-core lxterminal xrdp iceweasel && \
         apt-get clean && \
         apt-get -y remove
 
