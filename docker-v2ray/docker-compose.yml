@@ -1,0 +1,11 @@
+version: "3.4"
+
+services:
+  v2ray:
+    image: v2ray/official:latest
+    container_name: v2ray
+    restart: always
+    ports: 
+      - 9000:9000
+    volumes:
+      - ./v2ray:/etc/v2ray
