@@ -23,13 +23,8 @@ server {
     ssl_stapling on;
     ssl_stapling_verify on;
 
-    location / {
-        proxy_pass https://weihanli.xyz;
-    }
-
      location /v2ray {
         proxy_redirect off;
-        proxy_http_version 1.1;
         proxy_set_header Upgrade $http_upgrade;
         proxy_set_header Connection "upgrade";
         proxy_set_header Host $http_host;
