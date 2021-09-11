@@ -6,8 +6,8 @@ RUN     apt-get update && \
         apt-get clean && \
         apt-get -y remove
 
-ENV RDP_USER=user
-ENV RDP_PWD=password
+ARG RDP_USER=user
+ARG RDP_PWD=password
 
 RUN useradd -ms /bin/bash ${RDP_USER} && \
         echo "${RDP_USER}:${RDP_PWD}"|chpasswd && \
