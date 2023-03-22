@@ -126,7 +126,7 @@ More configuration examples: <https://github.com/v2fly/v2ray-examples>
 
 ## Update v2ray config
 
-Update the `config.json` in v2ray folder, update the `id` value with a guid value, and it will be used when you config the client, and you can config more than one client
+Update the `config.json` in config folder, update the `id` value with a guid value, and it will be used when you config the client, and you can config more than one client
 
 ## Run docker-compose
 
