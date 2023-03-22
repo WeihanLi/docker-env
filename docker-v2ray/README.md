@@ -33,6 +33,40 @@ server {
 }
 ```
 
+Websocket with TLS v2ray sample config:
+
+``` json
+{
+    "inbounds": [
+      {
+        "port": 9000,
+        "protocol": "vmess",
+        "settings": {
+          "clients": [
+            {
+              "id": "<your uuid>",
+              "level": 0,
+              "alterId": 100
+            }
+          ]
+        },
+        "streamSettings": {
+          "network": "ws",
+          "wsSettings": {
+            "path": "/v2ray"
+          }
+        }
+      }
+    ],
+    "outbounds": [
+      {
+        "protocol": "freedom",
+        "settings": {}
+      }
+    ]
+}
+```
+
 WebSocket without TLS sample nginx config:
 
 ``` conf
@@ -53,11 +87,46 @@ server {
 }
 ```
 
+Websocket without TLS v2ray sample config:
+
+``` json
+{
+    "inbounds": [
+      {
+        "port": 9000,
+        "protocol": "vmess",
+        "settings": {
+          "clients": [
+            {
+              "id": "<your uuid>",
+              "level": 0,
+              "alterId": 100
+            }
+          ]
+        },
+        "streamSettings": {
+          "network": "ws",
+          "security": "none",
+          "wsSettings": {
+              "path": "/v2ray"
+          }
+        }
+      }
+    ],
+    "outbounds": [
+      {
+        "protocol": "freedom",
+        "settings": {}
+      }
+    ]
+}
+```
+
 More configuration examples: <https://github.com/v2fly/v2ray-examples>
 
 ## Update v2ray config
 
-Update the `config.json` in v2ray folder, update the 9th line, id value with a guid value, and it will be used when you config the client, and you can config more than one client
+Update the `config.json` in v2ray folder, update the `id` value with a guid value, and it will be used when you config the client, and you can config more than one client
 
 ## Run docker-compose
 
@@ -66,5 +135,6 @@ When everything is ready, you can run `docker-compose up -d` to start the v2ray 
 ## Client configuration
 
 1. Download client from the <https://www.v2ray.com/awesome/tools.html>, for windows, download from <https://github.com/2dust/v2rayN>
-2. sample client configuration, id is the guid you configured in the `config.json`
-  ![client configuration](./images/client-configuration.png)
+2. websocket with tls sample client configuration, id is the guid you configured in the `config.json`
+  ![client configuration](./images/client-configuration-websocket-with-tls.png)
+3. web socket without tls sample client configuration ![client-configuration-websocket-without-tls](/images/client-configuration-websocket-without-tls.png)

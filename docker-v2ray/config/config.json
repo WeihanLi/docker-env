@@ -1,0 +1,29 @@
+{
+  "inbounds": [
+    {
+      "port": 9000,
+      "protocol": "vmess",
+      "settings": {
+        "clients": [
+          {
+            "id": "34e6b6ce-91cd-4817-892c-224959b10f1f",
+            "level": 0,
+            "alterId": 100
+          }
+        ]
+      },
+      "streamSettings": {
+        "network": "ws",
+        "wsSettings": {
+          "path": "/v2ray"
+        }
+      }
+    }
+  ],
+  "outbounds": [
+    {
+      "protocol": "freedom",
+      "settings": {}
+    }
+  ]
+}

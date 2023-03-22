@@ -8,4 +8,6 @@ services:
     ports: 
       - 9000:9000
     volumes:
-      - ./v2ray:/etc/v2ray
+      - ./config:/etc/v2ray
+      # - ./config/config.json:/etc/v2ray/config.json
+      # - ./config/config-websocket-no-tls.json:/etc/v2ray/config.json
