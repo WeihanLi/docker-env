@@ -137,4 +137,42 @@ When everything is ready, you can run `docker-compose up -d` to start the v2ray 
 1. Download client from the <https://www.v2ray.com/awesome/tools.html>, for windows, download from <https://github.com/2dust/v2rayN>
 2. websocket with tls sample client configuration, id is the guid you configured in the `config.json`
   ![client configuration](./images/client-configuration-websocket-with-tls.png)
-3. web socket without tls sample client configuration ![client-configuration-websocket-without-tls](./images/client-configuration-websocket-without-tls.png)
+  Clash proxy config sample:
+  
+      ``` yaml
+      proxies:
+      - name: "vmess-v2ray"
+        type: vmess
+        server: example.com
+        port: 443
+        uuid: <your-uuid>
+        alterId: 100
+        cipher: auto
+        tls: true
+        skip-cert-verify: true
+        servername: example.com
+        network: ws
+        ws-opts:
+          path: /v2ray
+      ```
+
+3. web socket without tls sample client configuration 
+  ![client-configuration-websocket-without-tls](./images/client-configuration-websocket-without-tls.png)
+  Clash proxy config sample:
+
+      ``` yaml
+      proxies:
+      - name: "vmess-v2ray"
+        type: vmess
+        server: 102.202.222.242
+        port: 80
+        uuid: <your-uuid>
+        alterId: 100
+        cipher: auto
+        # tls: true
+        # skip-cert-verify: true
+        # servername: example.com # priority over wss host
+        network: ws
+        ws-opts:
+          path: /v2ray
+      ```
