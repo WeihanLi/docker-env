@@ -176,3 +176,34 @@ When everything is ready, you can run `docker-compose up -d` to start the v2ray 
         ws-opts:
           path: /v2ray
       ```
+
+## PreConfigure
+
+``` sh
+sudo yum install -y yum-utils
+sudo yum-config-manager --add-repo https://download.docker.com/linux/centos/docker-ce.repo
+sudo yum install docker-ce docker-ce-cli containerd.io -y
+sudo systemctl start docker
+sudo systemctl enable docker
+
+sudo usermod -aG docker <userName>
+
+# uninstall docker
+# sudo yum remove docker-ce docker-ce-cli containerd.io
+# remove docker files
+# sudo rm -rf /var/lib/docker
+
+# docker-compose
+compose_version=$(curl -s https://api.github.com/repos/docker/compose/releases/latest | grep 'tag_name' | cut -d\" -f4)
+sudo curl -L "https://github.com/docker/compose/releases/download/${compose_version}/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
+sudo chmod +x /usr/local/bin/docker-compose
+
+# nginx
+sudo yum install nginx -y
+sudo systemctl enable nginx
+
+# bbr
+sudo echo "net.core.default_qdisc=fq" | sudo tee --append /etc/sysctl.conf
+sudo echo "net.ipv4.tcp_congestion_control=bbr" | sudo tee --append /etc/sysctl.conf
+sudo sysctl -p
+```
