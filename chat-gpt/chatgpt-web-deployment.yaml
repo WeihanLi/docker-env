@@ -22,7 +22,10 @@ spec:
       containers:
       - env:
         - name: AUTH_SECRET_KEY
-          value: Test1234
+          valueFrom:
+            secretKeyRef:
+              key: ChatGptWeb_Auth_Key
+              name: my-secrets
         - name: MAX_REQUEST_PER_HOUR
           value: "0"
         - name: OPENAI_API_KEY
@@ -82,7 +85,7 @@ spec:
           service:
             name: chatgpt-web
             port:
-              number: 3002
+              name: "web"
   tls:
   - hosts:
     - chat.weihanli.top

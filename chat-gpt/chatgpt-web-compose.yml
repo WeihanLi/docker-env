@@ -6,13 +6,12 @@ services:
     ports:
       - 3002:3002
     environment:
-      # 二选一
       OPENAI_API_KEY: sk-xxx
       # API模型，可选，设置 OPENAI_API_KEY 时可用，https://platform.openai.com/docs/models
       # gpt-4, gpt-4-0314, gpt-4-0613, gpt-4-32k, gpt-4-32k-0314, gpt-4-32k-0613, gpt-3.5-turbo-16k, gpt-3.5-turbo-16k-0613, gpt-3.5-turbo, gpt-3.5-turbo-0301, gpt-3.5-turbo-0613, text-davinci-003, text-davinci-002, code-davinci-002
       OPENAI_API_MODEL: gpt-3.5-turbo      
       # 访问权限密钥，可选
-      AUTH_SECRET_KEY: Test1234
+      AUTH_SECRET_KEY: Test
       # 每小时最大请求次数，可选，默认无限
       MAX_REQUEST_PER_HOUR: 0
       # 超时，单位毫秒，可选
