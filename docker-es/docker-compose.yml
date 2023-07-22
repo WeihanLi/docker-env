@@ -30,17 +30,17 @@ services:
     environment:
       ELASTICSEARCH_URL: http://elasticsearch:9200
 
-  skywalking:
-      image: weihanli/skywalking:5.0.0-GA
-      container_name: skywalking
-      ports:
-        - 10800:10800
-        - 11800:11800
-        - 12800:12800
-        - 8090:8080
-      volumes:
-        - ./skywalking/application.yml:/app/skywalking/config/application.yml
-      links:
-        - elasticsearch:elasticsearch
-      depends_on:
-        - elasticsearch
+#   skywalking:
+#       image: weihanli/skywalking:5.0.0-GA
+#       container_name: skywalking
+#       ports:
+#         - 10800:10800
+#         - 11800:11800
+#         - 12800:12800
+#         - 8090:8080
+#       volumes:
+#         - ./skywalking/application.yml:/app/skywalking/config/application.yml
+#       links:
+#         - elasticsearch:elasticsearch
+#       depends_on:
+#         - elasticsearch

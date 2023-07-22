@@ -126,7 +126,7 @@ More configuration examples: <https://github.com/v2fly/v2ray-examples>
 
 ## Update v2ray config
 
-Update the `config.json` in v2ray folder, update the `id` value with a guid value, and it will be used when you config the client, and you can config more than one client
+Update the `config.json` in config folder, update the `id` value with a guid value, and it will be used when you config the client, and you can config more than one client
 
 ## Run docker-compose
 
@@ -137,4 +137,73 @@ When everything is ready, you can run `docker-compose up -d` to start the v2ray 
 1. Download client from the <https://www.v2ray.com/awesome/tools.html>, for windows, download from <https://github.com/2dust/v2rayN>
 2. websocket with tls sample client configuration, id is the guid you configured in the `config.json`
   ![client configuration](./images/client-configuration-websocket-with-tls.png)
-3. web socket without tls sample client configuration ![client-configuration-websocket-without-tls](/images/client-configuration-websocket-without-tls.png)
+  Clash proxy config sample:
+  
+      ``` yaml
+      proxies:
+      - name: "vmess-v2ray"
+        type: vmess
+        server: example.com
+        port: 443
+        uuid: <your-uuid>
+        alterId: 100
+        cipher: auto
+        tls: true
+        skip-cert-verify: true
+        servername: example.com
+        network: ws
+        ws-opts:
+          path: /v2ray
+      ```
+
+3. web socket without tls sample client configuration 
+  ![client-configuration-websocket-without-tls](./images/client-configuration-websocket-without-tls.png)
+  Clash proxy config sample:
+
+      ``` yaml
+      proxies:
+      - name: "vmess-v2ray"
+        type: vmess
+        server: 102.202.222.242
+        port: 80
+        uuid: <your-uuid>
+        alterId: 100
+        cipher: auto
+        # tls: true
+        # skip-cert-verify: true
+        # servername: example.com # priority over wss host
+        network: ws
+        ws-opts:
+          path: /v2ray
+      ```
+
+## PreConfigure
+
+``` sh
+sudo yum install -y yum-utils
+sudo yum-config-manager --add-repo https://download.docker.com/linux/centos/docker-ce.repo
+sudo yum install docker-ce docker-ce-cli containerd.io -y
+sudo systemctl start docker
+sudo systemctl enable docker
+
+sudo usermod -aG docker <userName>
+
+# uninstall docker
+# sudo yum remove docker-ce docker-ce-cli containerd.io
+# remove docker files
+# sudo rm -rf /var/lib/docker
+
+# docker-compose
+compose_version=$(curl -s https://api.github.com/repos/docker/compose/releases/latest | grep 'tag_name' | cut -d\" -f4)
+sudo curl -L "https://github.com/docker/compose/releases/download/${compose_version}/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
+sudo chmod +x /usr/local/bin/docker-compose
+
+# nginx
+sudo yum install nginx -y
+sudo systemctl enable nginx
+
+# bbr
+sudo echo "net.core.default_qdisc=fq" | sudo tee --append /etc/sysctl.conf
+sudo echo "net.ipv4.tcp_congestion_control=bbr" | sudo tee --append /etc/sysctl.conf
+sudo sysctl -p
+```
