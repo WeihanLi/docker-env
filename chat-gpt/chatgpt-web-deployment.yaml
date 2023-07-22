@@ -1,0 +1,88 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: chatgpt-web
+  name: chatgpt-web
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: chatgpt-web
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxSurge: 1
+      maxUnavailable: 1
+  template:
+    metadata:
+      labels:
+        app: chatgpt-web
+    spec:
+      containers:
+      - env:
+        - name: AUTH_SECRET_KEY
+          value: Test1234
+        - name: MAX_REQUEST_PER_HOUR
+          value: "0"
+        - name: OPENAI_API_KEY
+          valueFrom:
+            secretKeyRef:
+              key: OpenAI_API_Key
+              name: my-secrets
+        - name: OPENAI_API_MODEL
+          value: gpt-3.5-turbo
+        - name: TIMEOUT_MS
+          value: "60000"
+        image: chenzhaoyu94/chatgpt-web
+        name: chatgpt-web
+        ports:
+        - name: "web"
+          containerPort: 3002
+          protocol: TCP
+        resources:
+          limits:
+            cpu: 50m
+            memory: 128Mi
+          requests:
+            cpu: 20m
+            memory: 128Mi
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app: chatgpt-web
+  name: chatgpt-web
+spec:
+  ports:
+    - name: "web"
+      port: 3002
+      targetPort: "web"
+  selector:
+    app: chatgpt-web
+
+---
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  annotations:
+    kubernetes.io/ingress.class: nginx
+    nginx.ingress.kubernetes.io/enable-cors: "true"
+  name: chatgpt-web-ingress
+spec:
+  rules:
+  - host: "chat.weihanli.top"
+    http:
+      paths:
+      - pathType: Prefix
+        path: "/"
+        backend:
+          service:
+            name: chatgpt-web
+            port:
+              number: 3002
+  tls:
+  - hosts:
+    - chat.weihanli.top
