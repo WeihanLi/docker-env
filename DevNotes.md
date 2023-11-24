@@ -25,13 +25,21 @@ More: https://mcr.microsoft.com/en-us/product/mssql/server/about
 
 ## 部署 Redis
 
-docker 部署 Redis
+> 部署普通 Redis
 
 ``` bash
 docker run --restart=always -d -p 6379:6379 --name redis-server redis:alpine
 ```
 
-更多：[https://hub.docker.com/_/redis?tab=description](https://hub.docker.com/_/redis?tab=description)
+更多：https://hub.docker.com/_/redis?tab=description
+
+> 部署 redis-stack
+
+``` bash
+docker run -d --name redis-stack -p 6379:6379 -p 8001:8001 redis/redis-stack:latest
+```
+
+More: https://redis.io/docs/install/install-stack/docker/
 
 ## 部署 MySql
 
