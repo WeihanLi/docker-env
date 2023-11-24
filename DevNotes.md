@@ -129,3 +129,5 @@ docker run -d --restart=always --name mongo-server -p 27017:27017 mongo
 ``` bash
 docker run -d --restart=always --name mongo-server -e MONGO_INITDB_ROOT_USERNAME=mongoadmin -e MONGO_INITDB_ROOT_PASSWORD=secret mongo
 ```
+
+More: https://hub.docker.com/_/mongo
