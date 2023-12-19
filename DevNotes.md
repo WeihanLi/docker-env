@@ -21,7 +21,7 @@ docker run -e 'ACCEPT_EULA=Y' -e 'MSSQL_SA_PASSWORD=<YourStrong!Passw0rd>' -p 14
 docker run -e 'ACCEPT_EULA=Y' -e 'MSSQL_SA_PASSWORD=<YourStrong!Passw0rd>'  --name 'sql1' -p 1401:1433 -v sql1data:/var/opt/mssql -d  mcr.microsoft.com/mssql/server:2019-latest
 ```
 
-More: https://mcr.microsoft.com/en-us/product/mssql/server/about
+More: <https://mcr.microsoft.com/en-us/product/mssql/server/about>
 
 ## 部署 Redis
 
@@ -31,7 +31,7 @@ More: https://mcr.microsoft.com/en-us/product/mssql/server/about
 docker run --restart=always -d -p 6379:6379 --name redis-server redis:alpine
 ```
 
-更多：https://hub.docker.com/_/redis?tab=description
+更多：<https://hub.docker.com/_/redis?tab=description>
 
 > 部署 redis-stack
 
@@ -39,7 +39,7 @@ docker run --restart=always -d -p 6379:6379 --name redis-server redis:alpine
 docker run -d --name redis-stack -p 6379:6379 -p 8001:8001 redis/redis-stack:latest
 ```
 
-More: https://redis.io/docs/install/install-stack/docker/
+More: <https://redis.io/docs/install/install-stack/docker/>
 
 ## 部署 MySql
 
@@ -54,12 +54,12 @@ docker run --restart=always -d -p 3306:3306 --name mysql-server  -v /my/custom:/
 ```
 
 挂载数据库目录
+
 ``` bash
 docker run --restart=always -d -p 3306:3306 --name mysql-server -v "$PWD/data":/var/lib/mysql  -e MYSQL_ROOT_PASSWORD=my-secret-pw mysql:8.0
 ```
 
 更多：[https://hub.docker.com/_/mysql?tab=description](https://hub.docker.com/_/mysql?tab=description)
-
 
 ## 部署 elasticsearch
 
@@ -100,6 +100,7 @@ services:
 ```
 
 直接使用 docker run 部署：
+
 ``` bash
 docker run -d -p 9200:9200 -e "ES_JAVA_OPTS=-Xms512m -Xmx512m" -e "discovery.type=single-node" --name=elasticsearch elasticsearch:5.6-alpine
 
@@ -130,4 +131,4 @@ docker run -d --restart=always --name mongo-server -p 27017:27017 mongo
 docker run -d --restart=always --name mongo-server -e MONGO_INITDB_ROOT_USERNAME=mongoadmin -e MONGO_INITDB_ROOT_PASSWORD=secret mongo
 ```
 
-More: https://hub.docker.com/_/mongo
+More: <https://hub.docker.com/_/mongo>
