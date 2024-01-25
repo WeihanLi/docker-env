@@ -2,7 +2,7 @@
 
 ## Intro
 
-some docker images build environment
+some docker images build environments
 
 ### Docker images
 
@@ -17,3 +17,8 @@ some docker images build environment
 - [kong](./docker-kong/docker-compose.yml)
 - [ssr](./docker-ssr)
 - [v2ray](./docker-v2ray)
+
+### External resources
+
+- [NATS](https://hub.docker.com/_/nats)
+- [NextCloud](https://hub.docker.com/_/nextcloud)
