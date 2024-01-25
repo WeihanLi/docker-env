@@ -1,0 +1,6 @@
+version: "3.6"
+services:
+  trojan:
+    image: "p4gefau1t/trojan-go"
+    volumes:
+      - ./config.json:/etc/trojan-go/config.json
