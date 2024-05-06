@@ -135,14 +135,6 @@ docker run -d --restart=always --name mongo-server -e MONGO_INITDB_ROOT_USERNAME
 
 More: <https://hub.docker.com/_/mongo>
 
-## 部署 excalidraw
-
-excalidraw 在线画图工具
-
-```sh
-docker run -d --restart=always --name excalidraw -p 9002:80 excalidraw/excalidraw
-```
-
 ## 部署 mdnice
 
 markdown-nice, markdown 文档微信排版工具
@@ -156,5 +148,13 @@ docker run -d --restart=always --name mdnice -p 9000:80 weihanli/mdnice
 微信对话生成工具
 
 ```sh
-docker run -d --restart=always --name wxdh -p 9000:80 weihanli/wxdh
+docker run -d --restart=always --name wxdh -p 9001:80 weihanli/wxdh
+```
+
+## 部署 excalidraw
+
+excalidraw 在线画图工具
+
+```sh
+docker run -d --restart=always --name excalidraw -p 9002:80 excalidraw/excalidraw
 ```
