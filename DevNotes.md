@@ -37,13 +37,19 @@ docker run --restart=always -d -p 6379:6379 --name redis-server redis:alpine
 > 部署 redis-stack
 
 ``` sh
-docker run --restart=always -d --name redis-stack -p 6379:6379 -p 8001:8001 redis/redis-stack:latest
+docker run --restart=always -d --name redis-stack -p 6379:6379 -p 8001:8001 redis/redis-stack-server:latest
 ```
 
 with arguments for example `replicaof`
 
 ```sh
-docker run --restart=always -d -p 6380:6379 -e REDIS_ARGS="--replicaof 10.86.112.141 6379" --name cms-redis-devdata redis/redis-stack:latest
+docker run --restart=always -d -p 6380:6379 -e REDIS_ARGS="--replicaof 10.86.112.141 6379" --name redis-stack-slave redis/redis-stack:latest
+```
+
+with redis-stack ui
+
+```
+docker run -d --name redis-stack -p 6379:6379 -p 8001:8001 redis/redis-stack:latest
 ```
 
 More:
