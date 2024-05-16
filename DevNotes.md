@@ -5,6 +5,7 @@
 使用 docker，很多环境可以借助 docker 去部署，没必要所有的环境都在本地安装，十分方便。
 前段时间电脑之前返厂修了，回来之后所有的软件都要重新装一遍，很麻烦，有些环境就直接用 docker 部署了，免去了还要再下载软件重新安装的麻烦。
 
+
 ## 部署 SqlServer
 
 docker 部署 SqlServer linux
@@ -36,7 +37,13 @@ docker run --restart=always -d -p 6379:6379 --name redis-server redis:alpine
 > 部署 redis-stack
 
 ``` sh
-docker run -d --name redis-stack -p 6379:6379 -p 8001:8001 redis/redis-stack:latest
+docker run --restart=always -d --name redis-stack -p 6379:6379 -p 8001:8001 redis/redis-stack:latest
+```
+
+with arguments for example `replicaof`
+
+```sh
+docker run --restart=always -d -p 6380:6379 -e REDIS_ARGS="--replicaof 10.86.112.141 6379" --name cms-redis-devdata redis/redis-stack:latest
 ```
 
 More:
