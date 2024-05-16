@@ -39,7 +39,10 @@ docker run --restart=always -d -p 6379:6379 --name redis-server redis:alpine
 docker run -d --name redis-stack -p 6379:6379 -p 8001:8001 redis/redis-stack:latest
 ```
 
-More: <https://redis.io/docs/install/install-stack/docker/>
+More:
+
+- https://redis.io/docs/install/install-stack/docker/
+- https://redis.io/docs/latest/operate/oss_and_stack/install/install-stack/docker/
 
 ## 部署 MySql
 
