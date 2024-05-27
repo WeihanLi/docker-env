@@ -1,6 +1,10 @@
 # https://hub.docker.com/_/rabbitmq
 FROM rabbitmq:3-management-alpine
 
+# add customized label
+LABEL maintainer="weihanli@outlook.com"
+LABEL maintainer="github.com/WeihanLi/docker-env"
+
 # rabbitmq plugins https://www.rabbitmq.com/docs/plugins
 RUN rabbitmq-plugins enable \
         # management & monitoring
@@ -14,6 +18,3 @@ RUN rabbitmq-plugins enable \
 
 # enable feature flags https://www.rabbitmq.com/docs/feature-flags
 # RUN rabbitmqctl enable_feature_flag all
-
-LABEL maintainer="weihanli@outlook.com"
-LABEL maintainer="github.com/WeihanLi/docker-env"
