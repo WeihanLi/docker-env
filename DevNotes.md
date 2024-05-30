@@ -13,16 +13,18 @@ docker 部署 SqlServer linux
 > password: At least 8 characters including uppercase, lowercase letters, base-10 digits and/or non-alphanumeric symbols
 
 ``` sh
-docker run -e 'ACCEPT_EULA=Y' -e 'MSSQL_SA_PASSWORD=<YourStrong!Passw0rd>' -p 1433:1433 --name sqlserver --restart=always -d mcr.microsoft.com/mssql/server:2017-latest
+docker run -e 'ACCEPT_EULA=Y' -e 'MSSQL_SA_PASSWORD=Test1234' -p 1433:1433 --name mssql-server --restart=always -d mcr.microsoft.com/mssql/server:2017-latest
 ```
 
 如果希望数据持久化，可以挂载数据目录，
 
 ``` sh
-docker run -e 'ACCEPT_EULA=Y' -e 'MSSQL_SA_PASSWORD=<YourStrong!Passw0rd>'  --name 'sql1' -p 1401:1433 -v sql1data:/var/opt/mssql -d  mcr.microsoft.com/mssql/server:2019-latest
+docker run -e 'ACCEPT_EULA=Y' -e 'MSSQL_SA_PASSWORD=<YourStrong!Passw0rd>'  --name 'mssql-server-1' -p 1433:1433 -v sql1data:/var/opt/mssql -d  mcr.microsoft.com/mssql/server:2022-latest
 ```
 
-More: <https://mcr.microsoft.com/en-us/product/mssql/server/about>
+More: 
+- https://mcr.microsoft.com/en-us/product/mssql/server/about
+- https://mcr.microsoft.com/en-us/product/mssql/server/tags
 
 ## 部署 Redis
 
