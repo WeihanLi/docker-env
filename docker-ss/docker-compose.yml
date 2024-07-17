@@ -1,0 +1,23 @@
+version: "3.6"
+
+services:
+  ss:
+    image: appso/shadowsocks-libev:latest
+    container_name: shadowsocks
+    ports:
+      - 9200:9200
+    networks:
+      - ss
+    volumes:
+      - "./etc/config.json:/etc/shadowsocks-libev/config.json:ro"
+    restart: unless-stopped
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "10m"
+        max-file: "2"
+
+networks:
+  ss:
+    name: ss
+    driver: bridge
