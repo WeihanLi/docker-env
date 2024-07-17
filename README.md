@@ -15,6 +15,7 @@ some docker images build environments
 - [elasticsearch+skywalking](./docker-es/docker-compose.yml)
 - [consul](./docker-consul/docker-compose.yml)
 - [kong](./docker-kong/docker-compose.yml)
+- [ss](./docker-ss)
 - [ssr](./docker-ssr)
 - [v2ray](./docker-v2ray)
 
