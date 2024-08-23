@@ -5,13 +5,13 @@
 docker:
 
 ```sh
-docker run -d --restart=always --name rabbitmq-server -p 5672:5672 -p 15672:15672 weihanli/rabbitmq
+docker run -d --restart=always --name rabbitmq -p 5672:5672 -p 15672:15672 weihanli/rabbitmq
 ```
 
 podman:
 
 ```sh
-podman run -d --restart=always --name rabbitmq-server -p 5672:5672 -p 15672:15672 weihanli/rabbitmq
+podman run -d --restart=always --name rabbitmq -p 5672:5672 -p 15672:15672 weihanli/rabbitmq
 ```
 
 ## References
