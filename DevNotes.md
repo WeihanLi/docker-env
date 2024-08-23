@@ -130,7 +130,13 @@ docker run --name=kibana -d -p 5601:5601 --link elasticsearch:elasticsearch kiba
 docker 部署 RabbitMQ
 
 ``` sh
-docker run -d --restart=always --name rabbitmq-server -p 5672:5672 -p 15672:15672 weihanli/rabbitmq
+docker run -d --restart=always --name rabbitmq -p 5672:5672 -p 15672:15672 weihanli/rabbitmq
+```
+
+官方镜像：
+
+``` sh
+docker run -d --restart=always --name rabbitmq -p 5672:5672 -p 15672:15672 rabbitmq:3-management-alpine
 ```
 
 更多信息：

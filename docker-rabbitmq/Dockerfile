@@ -3,7 +3,7 @@ FROM rabbitmq:3-management-alpine
 
 # add customized label
 LABEL maintainer="weihanli@outlook.com"
-LABEL maintainer="github.com/WeihanLi/docker-env"
+LABEL repo="github.com/WeihanLi/docker-env"
 
 # rabbitmq plugins https://www.rabbitmq.com/docs/plugins
 RUN rabbitmq-plugins enable \
