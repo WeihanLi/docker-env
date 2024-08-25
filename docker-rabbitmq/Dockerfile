@@ -1,5 +1,5 @@
 # https://hub.docker.com/_/rabbitmq
-FROM rabbitmq:3-management-alpine
+FROM --platform=$TARGETPLATFORM rabbitmq:3-management-alpine
 
 # add customized label
 LABEL maintainer="weihanli@outlook.com"
