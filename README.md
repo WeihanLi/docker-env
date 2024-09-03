@@ -7,6 +7,8 @@ some docker images build environments
 ### Docker images
 
 - [RabbitMQ](https://hub.docker.com/r/weihanli/rabbitmq)
+- [mdnice](https://hub.docker.com/r/weihanli/mdnice)
+- [wxdh](https://hub.docker.com/r/weihanli/wxdh)
 
 ### Docker-Compose Environments
 
