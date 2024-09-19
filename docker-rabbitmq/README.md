@@ -19,8 +19,8 @@ podman run -d --restart=always --name rabbitmq -p 5672:5672 -p 15672:15672 weiha
 > Need to enabled containered image to enable build multi-platform images, see <https://docs.docker.com/desktop/containerd/#enable-the-containerd-image-store>
 
 ```sh
-docker build --platform linux/amd64,linux/arm64,linux/arm -t weihanli/rabbitmq .
-docker push weihanli/rabbitmq
+docker build --platform linux/amd64,linux/arm64,linux/arm -t weihanli/rabbitmq -t weihanli/rabbitmq:4 .
+docker push weihanli/rabbitmq -a
 ```
 
 ## References
