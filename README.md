@@ -6,9 +6,9 @@ some docker images build environments
 
 ### Docker images
 
-- [Puppeteer](https://hub.docker.com/r/weihanli/puppeteer)
-
-- [Skywalking](https://hub.docker.com/r/weihanli/skywalking)
+- [RabbitMQ](https://hub.docker.com/r/weihanli/rabbitmq)
+- [mdnice](https://hub.docker.com/r/weihanli/mdnice)
+- [wxdh](https://hub.docker.com/r/weihanli/wxdh)
 
 ### Docker-Compose Environments
 
