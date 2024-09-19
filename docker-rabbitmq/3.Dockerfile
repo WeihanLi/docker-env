@@ -1,5 +1,5 @@
 # https://hub.docker.com/_/rabbitmq
-FROM --platform=$TARGETPLATFORM rabbitmq:4-management-alpine
+FROM --platform=$TARGETPLATFORM rabbitmq:3-management-alpine
 
 # add customized label
 LABEL maintainer="weihanli@outlook.com"
@@ -15,3 +15,6 @@ RUN rabbitmq-plugins enable \
         rabbitmq_mqtt rabbitmq_web_mqtt \
         # stream
         rabbitmq_stream
+
+# enable feature flags https://www.rabbitmq.com/docs/feature-flags
+# RUN rabbitmqctl enable_feature_flag all
