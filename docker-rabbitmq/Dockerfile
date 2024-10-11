@@ -7,8 +7,8 @@ LABEL repo="github.com/WeihanLi/docker-env"
 
 # rabbitmq plugins https://www.rabbitmq.com/docs/plugins
 RUN rabbitmq-plugins enable \
-        # management & monitoring
-        rabbitmq_management rabbitmq_prometheus \
+        # management & monitoring(already enabled in management base image)
+        # rabbitmq_management rabbitmq_prometheus \
         # shovel & federation
         rabbitmq_shovel rabbitmq_shovel_management rabbitmq_federation \
         # mqtt
