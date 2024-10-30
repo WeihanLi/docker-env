@@ -1,6 +1,6 @@
 FROM node:10
 
-LABEL maintainer="weihanli@outlook.com"
+LABEL org.opencontainers.image.authors="weihanli@outlook.com"
 
 # Install latest chrome package and fonts to support major charsets (Chinese, Japanese, Arabic, Hebrew, Thai and a few others)
 # Note: this installs the necessary libs to make the bundled version of Chromium that Puppeteer

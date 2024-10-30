@@ -14,5 +14,5 @@ RUN useradd -ms /bin/bash ${RDP_USER} && \
         usermod -a -G sudo ${RDP_USER}
 
 EXPOSE 3389
-LABEL maintainer="weihanli@outlook.com"
+LABEL org.opencontainers.image.authors="weihanli@outlook.com"
 ENTRYPOINT /etc/init.d/xrdp start && tail -F /var/log/xrdp-sesman.log

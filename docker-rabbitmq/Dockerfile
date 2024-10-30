@@ -2,8 +2,8 @@
 FROM --platform=$TARGETPLATFORM rabbitmq:4-management-alpine
 
 # add customized label
-LABEL maintainer="weihanli@outlook.com"
-LABEL repo="github.com/WeihanLi/docker-env"
+LABEL org.opencontainers.image.authors="weihanli@outlook.com"
+LABEL org.opencontainers.image.source="github.com/WeihanLi/docker-env"
 
 # rabbitmq plugins https://www.rabbitmq.com/docs/plugins
 RUN rabbitmq-plugins enable \
