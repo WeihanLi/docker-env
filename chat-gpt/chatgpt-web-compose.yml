@@ -1,7 +1,6 @@
-version: '3'
-
 services:
   app:
+    container_name: chatgpt-web
     image: chenzhaoyu94/chatgpt-web # 总是使用 latest ,更新时重新 pull 该 tag 镜像即可
     ports:
       - 3002:3002

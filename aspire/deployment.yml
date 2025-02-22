@@ -1,0 +1,98 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: aspire-dashboard
+  name: aspire-dashboard
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: aspire-dashboard
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxSurge: 1
+      maxUnavailable: 1
+  template:
+    metadata:
+      labels:
+        app: aspire-dashboard
+    spec:
+      containers:
+      # https://mcr.microsoft.com/en-us/artifact/mar/dotnet/aspire-dashboard/about
+      - env:
+        - name: Authentication__Schemes__OpenIdConnect__ClientSecret
+          valueFrom:
+            secretKeyRef:
+              key: Aspire_ClientSecret
+              name: my-secrets
+        - name: MAX_REQUEST_PER_HOUR
+          value: "0"
+        - name: OPENAI_API_KEY
+          valueFrom:
+            secretKeyRef:
+              key: OpenAI_API_Key
+              name: my-secrets
+        - name: Authentication__Schemes__OpenIdConnect__Authority
+          value: "https://id.weihanli.xyz"
+        - name: Authentication__Schemes__OpenIdConnect__ClientId
+          value: "aspire"
+        - name: Dashboard__Frontend__AuthMode
+          value: "OpenIdConnect"
+        image: mcr.microsoft.com/dotnet/aspire-dashboard:9.0
+        name: aspire-dashboard
+        ports:
+        - name: "otlp"
+          containerPort: 18889
+          protocol: TCP
+        - name: "dashboard"
+          containerPort: 18888
+          protocol: TCP
+        resources:
+          limits:
+            cpu: 100m
+            memory: 256Mi
+          requests:
+            memory: 256Mi
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app: aspire-dashboard
+  name: aspire-dashboard
+spec:
+  ports:
+    - name: "dashboard"
+      port: 18888
+      targetPort: "dashboard"
+    - name: "otlp"
+      port: 4317
+      targetPort: "otlp"
+  selector:
+    app: aspire-dashboard
+
+# ---
+# apiVersion: networking.k8s.io/v1
+# kind: Ingress
+# metadata:
+#   annotations:
+#     kubernetes.io/ingress.class: nginx
+#   name: aspire-dashboard-ingress
+# spec:
+#   rules:
+#   - host: "aspire.weihanli.top"
+#     http:
+#       paths:
+#       - pathType: Prefix
+#         path: "/"
+#         backend:
+#           service:
+#             name: aspire-dashboard
+#             port:
+#               name: "dashboard"
+#   tls:
+#   - hosts:
+#     - aspire.weihanli.top
