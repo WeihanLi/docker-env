@@ -27,13 +27,6 @@ spec:
             secretKeyRef:
               key: Aspire_ClientSecret
               name: my-secrets
-        - name: MAX_REQUEST_PER_HOUR
-          value: "0"
-        - name: OPENAI_API_KEY
-          valueFrom:
-            secretKeyRef:
-              key: OpenAI_API_Key
-              name: my-secrets
         - name: Authentication__Schemes__OpenIdConnect__Authority
           value: "https://id.weihanli.xyz"
         - name: Authentication__Schemes__OpenIdConnect__ClientId
@@ -69,10 +62,10 @@ spec:
     - name: "dashboard"
       port: 18888
       targetPort: "dashboard"
+      # nodePort: 31888
     - name: "otlp"
       port: 4317
       targetPort: "otlp"
-      # nodePort: 38888
   selector:
     app: aspire-dashboard
 
