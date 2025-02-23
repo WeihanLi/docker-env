@@ -31,6 +31,10 @@ spec:
           value: "https://id.weihanli.xyz"
         - name: Authentication__Schemes__OpenIdConnect__ClientId
           value: "aspire"
+        - name: Authentication__Schemes__OpenIdConnect__GetClaimsFromUserInfoEndpoint
+          value: "true"
+        - name: Authentication__Schemes__OpenIdConnect__Scope__0
+          value: "roles"
         - name: Dashboard__Frontend__AuthMode
           value: "OpenIdConnect"
         - name: "ASPNETCORE_FORWARDEDHEADERS_ENABLED"
@@ -47,8 +51,6 @@ spec:
         resources:
           limits:
             cpu: 100m
-            memory: 256Mi
-          requests:
             memory: 256Mi
 
 ---
