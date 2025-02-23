@@ -33,6 +33,8 @@ spec:
           value: "aspire"
         - name: Dashboard__Frontend__AuthMode
           value: "OpenIdConnect"
+        - name: "ASPNETCORE_FORWARDEDHEADERS_ENABLED"
+          value: "true"
         image: mcr.microsoft.com/dotnet/aspire-dashboard:9.0
         name: aspire-dashboard
         ports:
