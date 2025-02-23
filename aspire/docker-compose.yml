@@ -7,11 +7,11 @@ services:
       - 4317:18889
     environment:
       # Anonymous
-      # DOTNET_DASHBOARD_UNSECURED_ALLOW_ANONYMOUS: "true"
+      DOTNET_DASHBOARD_UNSECURED_ALLOW_ANONYMOUS: "true"
       # # OpenId Connect
       # Authentication__Schemes__OpenIdConnect__Authority: "https://id.weihanli.xyz"
       # Authentication__Schemes__OpenIdConnect__ClientId: "aspire"
-      # Authentication__Schemes__OpenIdConnect__ClientSecret: "1fcbbab8-1f64-9f91-8be6-92412570d1f6"
+      # Authentication__Schemes__OpenIdConnect__ClientSecret: ""
       # Authentication__Schemes__OpenIdConnect__GetClaimsFromUserInfoEndpoint: "true"
       # Authentication__Schemes__OpenIdConnect__Scope__0: "roles"
       # # Dashboard__Frontend__OpenIdConnect__RequiredClaimType: "role"
