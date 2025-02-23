@@ -64,6 +64,7 @@ metadata:
     app: aspire-dashboard
   name: aspire-dashboard
 spec:
+  # type: NodePort
   ports:
     - name: "dashboard"
       port: 18888
@@ -71,6 +72,7 @@ spec:
     - name: "otlp"
       port: 4317
       targetPort: "otlp"
+      # nodePort: 38888
   selector:
     app: aspire-dashboard
 
