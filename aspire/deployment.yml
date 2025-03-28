@@ -33,13 +33,13 @@ spec:
           value: "aspire"
         - name: Authentication__Schemes__OpenIdConnect__GetClaimsFromUserInfoEndpoint
           value: "true"
-        - name: Authentication__Schemes__OpenIdConnect__Scope__0
-          value: "roles"
+        # - name: Authentication__Schemes__OpenIdConnect__Scope__0
+        #   value: "roles"
         - name: Dashboard__Frontend__AuthMode
           value: "OpenIdConnect"
         - name: "ASPNETCORE_FORWARDEDHEADERS_ENABLED"
           value: "true"
-        image: mcr.microsoft.com/dotnet/aspire-dashboard:9.0
+        image: mcr.microsoft.com/dotnet/aspire-dashboard:9.1
         name: aspire-dashboard
         ports:
         - name: "otlp"
