@@ -154,7 +154,7 @@ docker run -d --restart=always --name mongo-server -p 27017:27017 mongo
 带密码配置部署
 
 ``` sh
-docker run -d --restart=always --name mongo-server -e MONGO_INITDB_ROOT_USERNAME=mongoadmin -e MONGO_INITDB_ROOT_PASSWORD=secret mongo
+docker run -d --restart=always --name mongo-server -e MONGO_INITDB_ROOT_USERNAME=mongoadmin -e MONGO_INITDB_ROOT_PASSWORD=secret -p 27017:27017 mongo
 ```
 
 More: <https://hub.docker.com/_/mongo>
