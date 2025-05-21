@@ -20,8 +20,7 @@ podman run -d --restart=always --name rabbitmq -p 5672:5672 -p 15672:15672 weiha
 
 ```sh
 # remove the existing image cache to pull latest image
-docker rmi weihanli/rabbitmq
-docker rmi weihanli/rabbitmq:4
+docker rmi weihanli/rabbitmq && docker rmi weihanli/rabbitmq:4
 # build image
 docker build --platform linux/amd64,linux/arm64,linux/arm -t weihanli/rabbitmq -t weihanli/rabbitmq:4 .
 # push image all tags
