@@ -6,9 +6,9 @@
 前段时间电脑之前返厂修了，回来之后所有的软件都要重新装一遍，很麻烦，有些环境就直接用 docker 部署了，免去了还要再下载软件重新安装的麻烦。
 
 
-## 部署 SqlServer
+## 部署 SQL Server
 
-docker 部署 SqlServer linux
+docker 部署 SQL Server Linux
 
 > password: At least 8 characters including uppercase, lowercase letters, base-10 digits and/or non-alphanumeric symbols
 
@@ -21,6 +21,13 @@ docker run -e 'ACCEPT_EULA=Y' -e 'MSSQL_SA_PASSWORD=Test1234' -p 1433:1433 --nam
 ``` sh
 docker run -e 'ACCEPT_EULA=Y' -e 'MSSQL_SA_PASSWORD=<YourStrong!Passw0rd>'  --name 'mssql-server-1' -p 1433:1433 -v sql1data:/var/opt/mssql -d  mcr.microsoft.com/mssql/server:2022-latest
 ```
+
+Possible tags:
+
+- `2017-latest`
+- `2019-latest`
+- `2022-latest`
+- `2025-latest`
 
 More: 
 - https://mcr.microsoft.com/en-us/product/mssql/server/about
@@ -42,13 +49,13 @@ docker run --restart=always -d -p 6379:6379 --name redis-server redis:alpine
 docker run --restart=always -d --name redis-stack -p 6379:6379 redis/redis-stack-server:latest
 ```
 
-with arguments for example `replicaof`
+with arguments, for example, `replicaof`
 
 ```sh
 docker run --restart=always -d -p 6380:6379 -e REDIS_ARGS="--replicaof 10.86.112.141 6379" --name redis-stack-slave redis/redis-stack-server:latest
 ```
 
-with redis-stack ui
+With redis-stack ui
 
 ```
 docker run -d --name redis-stack -p 6379:6379 -p 8001:8001 redis/redis-stack:latest
@@ -59,7 +66,7 @@ More:
 - https://redis.io/docs/install/install-stack/docker/
 - https://redis.io/docs/latest/operate/oss_and_stack/install/install-stack/docker/
 
-## 部署 MySql
+## 部署 MySQL
 
 ``` sh
 docker run --restart=always -d -p 3306:3306 --name mysql-server  -e MYSQL_ROOT_PASSWORD=<rootPassword> mysql:8.0
@@ -79,7 +86,7 @@ docker run --restart=always -d -p 3306:3306 --name mysql-server -v "$PWD/data":/
 
 更多：[https://hub.docker.com/_/mysql?tab=description](https://hub.docker.com/_/mysql?tab=description)
 
-## 部署 elasticsearch
+## 部署 Elasticsearch
 
 elasticsearch 一般与 kibana 一起部署，kibana 可以提供一个ui界面方便查询，我们可以使用 docker-compose 部署一个 elasticsearch 和 kibana 实例
 
@@ -154,7 +161,7 @@ docker run -d --restart=always --name mongo-server -p 27017:27017 mongo
 带密码配置部署
 
 ``` sh
-docker run -d --restart=always --name mongo-server -e MONGO_INITDB_ROOT_USERNAME=mongoadmin -e MONGO_INITDB_ROOT_PASSWORD=secret mongo
+docker run -d --restart=always --name mongo-server -e MONGO_INITDB_ROOT_USERNAME=mongoadmin -e MONGO_INITDB_ROOT_PASSWORD=secret -p 27017:27017 mongo
 ```
 
 More: <https://hub.docker.com/_/mongo>
