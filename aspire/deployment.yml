@@ -39,7 +39,7 @@ spec:
           value: "OpenIdConnect"
         - name: "ASPNETCORE_FORWARDEDHEADERS_ENABLED"
           value: "true"
-        image: mcr.microsoft.com/dotnet/aspire-dashboard:9.1
+        image: mcr.microsoft.com/dotnet/aspire-dashboard:9.4
         name: aspire-dashboard
         ports:
         - name: "otlp"

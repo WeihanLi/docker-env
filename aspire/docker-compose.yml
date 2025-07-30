@@ -1,7 +1,7 @@
 services:
   aspire-dashboard:
     container_name: aspire-dashboard
-    image: weihanli/aspire-dashboard:9.3
+    image: weihanli/aspire-dashboard:9.4
     ports:
       - 18888:18888
       - 4317:18889
