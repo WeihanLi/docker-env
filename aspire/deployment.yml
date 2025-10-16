@@ -33,13 +33,23 @@ spec:
           value: "aspire"
         - name: Authentication__Schemes__OpenIdConnect__GetClaimsFromUserInfoEndpoint
           value: "true"
-        # - name: Authentication__Schemes__OpenIdConnect__Scope__0
-        #   value: "roles"
+        - name: Authentication__Schemes__OpenIdConnect__Scope__0
+          value: "roles"
         - name: Dashboard__Frontend__AuthMode
           value: "OpenIdConnect"
+        - name: Dashboard__Frontend__OpenIdConnect__RequiredClaimType
+          value: "role"
+        - name: Dashboard__Frontend__OpenIdConnect__RequiredClaimValue
+          value: "Aspire"
+        - name: Dashboard__Frontend__OpenIdConnect__ClaimActions_0_ClaimType
+          value: "role"
+        - name: Dashboard__Frontend__OpenIdConnect__ClaimActions_0_ClaimValue
+          value: "role"
+        - name: DOTNET_DASHBOARD_UNSECURED_ALLOW_ANONYMOUS
+          value: "false"
         - name: "ASPNETCORE_FORWARDEDHEADERS_ENABLED"
           value: "true"
-        image: mcr.microsoft.com/dotnet/aspire-dashboard:9.4
+        image: weihanli/aspire-dashboard:latest #mcr.microsoft.com/dotnet/aspire-dashboard:9.0
         name: aspire-dashboard
         ports:
         - name: "otlp"
@@ -50,7 +60,7 @@ spec:
           protocol: TCP
         resources:
           limits:
-            cpu: 100m
+            cpu: 80m
             memory: 256Mi
 
 ---
